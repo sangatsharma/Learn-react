@@ -1,9 +1,10 @@
 import "./Container.css";
 function Container(props) {
 
-  
+  let searchText = "";
   const handleChange=(e)=>{
-    console.log(e.target.value);
+    searchText = e.target.value;
+    props.handleSearch(searchText);
   }
   return (
     <div id="Container">
