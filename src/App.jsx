@@ -1,14 +1,13 @@
 import { useState } from "react";
 import "./App.css";
-import Container from "./Components/Container/Container";
+import Container from "./Components/Container/Container.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
-
+ 
   return (
-     <div id="main">
-       <Container />
-     </div>
+    <div id="main">
+      <Container />
+    </div>
   );
 }
 

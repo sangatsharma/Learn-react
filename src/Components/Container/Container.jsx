@@ -1,11 +1,25 @@
 import "./Container.css";
-function Container(props) {
+import {useState} from 'react';
+export default function Container(props) {
+  const [searchedText,setSearchText]=useState('');
+  const [findText,setFindText]=useState('');
 
+  
   let searchText = "";
-  const handleChange=(e)=>{
-    searchText = e.target.value;
-    props.handleSearch(searchText);
-  }
+  const handleChange = (e) => {
+    searchText=e.target.value;
+    setSearchText(searchText);
+    setFindText("");
+  };
+  
+  const handleSearch = (e) => {
+    console.log(searchText);
+    setFindText(searchedText==""?"...":`showing receipe for ${searchedText}`);
+    setSearchText(searchText);
+  
+    //todo - call the API
+  };
+  
   return (
     <div id="Container">
       <h1>Tasty Receipe Finder</h1>
@@ -16,16 +30,16 @@ function Container(props) {
           className="search-input"
           placeholder="Search for Receipe"
           onChange={handleChange}
+          value={searchedText}
+         
         />
-        <button
-          onClick={props.handleSearch}
-          title="Search"
-          className="search-button"
-        >
+        <button onClick={handleSearch} title="Search" className="search-button">
           🔍
-        </button>
+        </button> 
       </div>
+      <span> {findText+" "+searchedText}</span>
+     
     </div>
   );
 }
-export default Container;
+
